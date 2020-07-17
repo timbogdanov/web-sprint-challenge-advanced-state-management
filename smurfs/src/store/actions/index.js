@@ -22,12 +22,16 @@ export const fetchData = () => {
   };
 };
 
-export const postData = (name, age, height) => {
-  return () => {
-    axios.post('http://localhost:3333/smurfs', {
-      name: name,
-      age: age,
-      height: height,
-    });
+export const postData = (state) => {
+  return (dispatch) => {
+    dispatch({ type: POST_SMURF_START });
+    axios
+      .post('http://localhost:3333/smurfs', state)
+      .then((res) => {
+        dispatch({ type: POST_SMURF_SUCCESS, payload: res.data });
+      })
+      .catch((err) => {
+        dispatch({ type: POST_SMURF_FAILURE, payload: err.message });
+      });
   };
 };

@@ -8,21 +8,15 @@ class App extends Component {
   constructor() {
     super();
     this.state = {
-      nameValue: '',
-      ageValue: '',
-      heightValue: '',
+      name: '',
+      age: '',
+      height: '',
     };
   }
 
   componentDidMount() {
     this.props.fetchData();
   }
-
-  // componentDidUpdate(prevProps, prevState) {
-  //   if (this.props.smurfData !== prevProps.smurfData) {
-  //     this.props.fetchData();
-  //   }
-  // }
 
   onChange = (e) => {
     this.setState({ [e.target.name]: e.target.value });
@@ -35,31 +29,27 @@ class App extends Component {
         <form>
           <input
             placeholder='Name'
-            name='nameValue'
-            value={this.state.nameValue}
+            name='name'
+            value={this.state.name}
             onChange={this.onChange}
           />
           <input
             placeholder='Age'
-            name='ageValue'
-            value={this.state.ageValue}
+            name='age'
+            value={this.state.age}
             onChange={this.onChange}
           />
           <input
             placeholder='Height'
-            name='heightValue'
-            value={this.state.heightValue}
+            name='height'
+            value={this.state.height}
             onChange={this.onChange}
           />
         </form>
 
         <button
           onClick={() => {
-            this.props.postData(
-              this.state.nameValue,
-              this.state.ageValue,
-              this.state.heightValue
-            );
+            this.props.postData(this.state);
           }}
         >
           Post new smurf
@@ -83,6 +73,8 @@ class App extends Component {
               </span>
             </div>
           ))}
+
+        {this.props.error && <p>{this.props.error}</p>}
       </div>
     );
   }
