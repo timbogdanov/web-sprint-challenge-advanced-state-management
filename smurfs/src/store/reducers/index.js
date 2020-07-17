@@ -3,7 +3,7 @@ import * as ACTIONS from '../actions';
 const initialState = {
   isLoadingData: false,
   smurfData: [],
-  error: '',
+  error: {},
 };
 
 export const smurfReducer = (state = initialState, action) => {
@@ -18,6 +18,19 @@ export const smurfReducer = (state = initialState, action) => {
         ...state,
         isLoading: false,
         smurfData: action.payload,
+      };
+    case ACTIONS.FETCH_SMURF_FAILURE:
+      return {
+        ...state,
+        isLoading: false,
+        smurfData: [],
+        error: action.payload,
+      };
+
+    case ACTIONS.POST_SMURF_START:
+      return {
+        ...state,
+        isLoading: true,
       };
     default:
       return state;

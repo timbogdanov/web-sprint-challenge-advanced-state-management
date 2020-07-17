@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import { fetchData } from '../store/actions';
+import { fetchData, postData } from '../store/actions';
 import './App.css';
+
 class App extends Component {
   componentDidMount() {
     this.props.fetchData();
@@ -20,6 +21,14 @@ class App extends Component {
               <p>{smurf.height}</p>
             </div>
           ))}
+
+        <button
+          onClick={() => {
+            this.props.postData();
+          }}
+        >
+          Post new smurf
+        </button>
       </div>
     );
   }
@@ -33,4 +42,4 @@ const mapStateToProps = (state) => {
   };
 };
 
-export default connect(mapStateToProps, { fetchData })(App);
+export default connect(mapStateToProps, { fetchData, postData })(App);
