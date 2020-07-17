@@ -22,12 +22,12 @@ export const fetchData = () => {
   };
 };
 
-export const postData = () => {
+export const postData = (name, age, height) => {
   return () => {
     axios.post('http://localhost:3333/smurfs', {
-      name: 'Garybot',
-      age: 54,
-      height: '15ft',
+      name: name,
+      age: age,
+      height: height,
     });
   };
 };
