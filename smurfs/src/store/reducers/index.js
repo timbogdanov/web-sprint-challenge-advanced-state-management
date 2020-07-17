@@ -11,26 +11,21 @@ export const smurfReducer = (state = initialState, action) => {
     case ACTIONS.FETCH_SMURF_START:
       return {
         ...state,
-        isLoading: true,
+        isLoadingData: true,
       };
     case ACTIONS.FETCH_SMURF_SUCCESS:
       return {
         ...state,
-        isLoading: false,
+        isLoadingData: false,
         smurfData: action.payload,
+        error: '',
       };
     case ACTIONS.FETCH_SMURF_FAILURE:
       return {
         ...state,
-        isLoading: false,
+        isLoadingData: false,
         smurfData: [],
         error: action.payload,
-      };
-
-    case ACTIONS.POST_SMURF_START:
-      return {
-        ...state,
-        isLoading: true,
       };
     default:
       return state;

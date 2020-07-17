@@ -19,6 +19,7 @@ class App extends Component {
     return (
       <div className='App'>
         <h1>Smurf Town</h1>
+        {this.props.isLoading && <p>Loading smurfs...</p>}
         {this.props.smurfData &&
           this.props.smurfData.map((smurf) => (
             <div className='smurf' key={smurf.id}>
