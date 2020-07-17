@@ -24,20 +24,8 @@ class App extends Component {
   //   }
   // }
 
-  onNameChange = (e) => {
-    this.setState({
-      nameValue: e.target.value,
-    });
-  };
-  onAgeChange = (e) => {
-    this.setState({
-      ageValue: e.target.value,
-    });
-  };
-  onHeightChange = (e) => {
-    this.setState({
-      heightValue: e.target.value,
-    });
+  onChange = (e) => {
+    this.setState({ [e.target.name]: e.target.value });
   };
 
   render() {
@@ -47,18 +35,21 @@ class App extends Component {
         <form>
           <input
             placeholder='Name'
+            name='nameValue'
             value={this.state.nameValue}
-            onChange={this.onNameChange}
+            onChange={this.onChange}
           />
           <input
             placeholder='Age'
+            name='ageValue'
             value={this.state.ageValue}
-            onChange={this.onAgeChange}
+            onChange={this.onChange}
           />
           <input
             placeholder='Height'
+            name='heightValue'
             value={this.state.heightValue}
-            onChange={this.onHeightChange}
+            onChange={this.onChange}
           />
         </form>
 
