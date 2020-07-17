@@ -1,3 +1,11 @@
 .App {
   text-align: center;
 }
+
+.smurf {
+  margin: 20px 0;
+}
+
+.smurf span {
+  margin: 0 5px;
+}

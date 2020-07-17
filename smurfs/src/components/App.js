@@ -9,16 +9,31 @@ class App extends Component {
     this.props.fetchData();
   }
 
+  componentDidUpdate(prevProps) {
+    if (this.props.smurfData !== prevProps.smurfData) {
+      this.props.fetchData();
+    }
+  }
+
   render() {
     return (
       <div className='App'>
-        <h1>Hello</h1>
+        <h1>Smurf Town</h1>
         {this.props.smurfData &&
           this.props.smurfData.map((smurf) => (
-            <div key={smurf.id}>
-              <p>{smurf.name}</p>
-              <p>{smurf.age}</p>
-              <p>{smurf.height}</p>
+            <div className='smurf' key={smurf.id}>
+              <span>
+                <b>Name: </b>
+                {smurf.name}
+              </span>
+              <span>
+                <b>Age: </b>
+                {smurf.age}
+              </span>
+              <span>
+                <b>Height: </b>
+                {smurf.height}
+              </span>
             </div>
           ))}
 

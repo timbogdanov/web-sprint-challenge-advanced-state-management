@@ -27,9 +27,9 @@ export const postData = () => {
     dispatch({ type: POST_SMURF_START });
     axios
       .post('http://localhost:3333/smurfs', {
-        name: 'Gary',
-        age: 27,
-        height: '6ft',
+        name: 'Garybot',
+        age: 54,
+        height: '15ft',
       })
       .then((res) => {
         dispatch({ type: POST_SMURF_SUCCESS, payload: res });
